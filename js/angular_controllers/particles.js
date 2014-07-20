@@ -82,7 +82,7 @@ angular.module("App")
       * a number between 0 and 1
       * 0 is no loss over time, and 1 is very rapid loss over time
       */ 
-    var energyLoss = 0.01;
+    var energyLoss = 0.005;
 
     var nebulaColor = "black";
     var blackholeColor = "black";

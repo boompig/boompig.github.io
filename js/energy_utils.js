@@ -1,6 +1,6 @@
 /**
  * Requires the following to be defined:
- * 	- Vector
+ *  - Vector
  *  - numToHex
  *  - linearScale
  */

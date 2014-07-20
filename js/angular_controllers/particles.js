@@ -339,9 +339,9 @@ angular.module("App")
 
         blackholes = [
             new BlackHole(new Vector($scope.canvas.width / 2, $scope.canvas.height / 2), 2),
-            new BlackHole(new Vector($scope.canvas.width / 4, $scope.canvas.height * 2 / 3), 1),
+            new BlackHole(new Vector($scope.canvas.width / 4, $scope.canvas.height * 2 / 3), 3),
             // large black hole off-screen
-            new BlackHole(new Vector($scope.canvas.width + 20, $scope.canvas.height / 2), 8)
+            new BlackHole(new Vector($scope.canvas.width + 20, $scope.canvas.height / 2), 6)
         ];
 
         // start generating particles in each Nebula

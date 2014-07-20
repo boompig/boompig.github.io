@@ -46,7 +46,7 @@ angular.module("App")
     /* refers to radius */
     var collapseSize = 100;
 
-    var maxSpeed = 3;
+    var maxSpeed = 5;
 
     /* frame rate for movement. This is = 1000/moveRate fps */
     var moveRate = 1000 / 24;

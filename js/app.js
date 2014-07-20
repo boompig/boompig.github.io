@@ -13,9 +13,9 @@ var app = angular.module("App", ['ngRoute', 'ngAnimate'])
         controllerAs: "c"
     }).when("/", {
         // also main view
-        templateUrl: "views/achievements_carousel.html",
-        controller: "CarouselCtrl",
-        controllerAs: "c"
+        templateUrl: "views/particles.html",
+        controller: "ParticleCtrl",
+        controllerAs: "p"
     }).when("/colors/", {
         templateUrl: "views/particle_colors.html",
         controller: "ParticleCtrl",
@@ -25,6 +25,10 @@ var app = angular.module("App", ['ngRoute', 'ngAnimate'])
         controller: "ParticleCtrl",
         controllerAs: "p"
     }).when("/~dbkats/particles/", {
+        templateUrl: "views/particles.html",
+        controller: "ParticleCtrl",
+        controllerAs: "p"
+    }).when("/particles/", {
         templateUrl: "views/particles.html",
         controller: "ParticleCtrl",
         controllerAs: "p"

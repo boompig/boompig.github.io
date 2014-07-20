@@ -35,7 +35,7 @@ angular.module("App")
     /*
      * set a hard cap on the # of particles. TODO need to change some stuff before we can remove this
      */
-    var maxParticles = 250;
+    var maxParticles = 400;
 
     /** refers to radius */
     var maxParticleSpawnSize = 3;

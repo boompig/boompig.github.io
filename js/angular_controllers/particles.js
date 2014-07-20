@@ -38,7 +38,7 @@ angular.module("App")
     var maxParticles = 250;
 
     /** refers to radius */
-    var maxParticleSpawnSize = 4;
+    var maxParticleSpawnSize = 3;
 
     /** refers to radius */
     var minParticleSpawnSize = 1;
@@ -47,7 +47,7 @@ angular.module("App")
     var collapseSize = 100;
 
     /* this maximum is per direction */
-    var maxMoveSpeed = 3;
+    var maxMoveSpeed = 2;
 
     /* used to calculate minMoveSpeed */
     var baseMinMoveSpeed = maxMoveSpeed; // the speed at which the first particle will move
@@ -304,9 +304,6 @@ angular.module("App")
         blackholes.map(function (b) { b.draw() });
     }
 
-    
-
-    
 
     /**
      * Return a random velocity, constrained by maxMoveSpeed

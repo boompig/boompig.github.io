@@ -84,8 +84,8 @@ angular.module("App")
       */ 
     var energyLoss = 0.01;
 
-    var nebulaColor = "purple";
-    var blackholeColor = "green";
+    var nebulaColor = "black";
+    var blackholeColor = "black";
     /**********************************************/
 
     /**

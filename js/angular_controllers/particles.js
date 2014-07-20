@@ -62,7 +62,7 @@ angular.module("App")
     var particleGenRange = 0;
 
     /** generate a new particle (in each nebula) every this many ms */
-    var particleGenRate = 1000;
+    var particleGenRate = 800;
 
     /* age a particle this often (# of timesteps) */
     var ageThreshold = 10;

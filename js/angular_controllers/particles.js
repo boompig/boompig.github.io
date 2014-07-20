@@ -191,7 +191,7 @@ angular.module("App")
 
         this.energy = energy;
 
-        // radius is unrelated to size (think of this as mass)
+        // radius is unrelated to energy (think of this as mass)
         this.r = randomSize();
 
         // velocity is positively related to energy
@@ -250,13 +250,9 @@ angular.module("App")
     };
 
     function randomSize() {
-        // I want the size to be more likely small than large
-        // return randomInRange(
-        //     Math.sqrt(minParticleSpawnSize),
-        //     Math.sqrt(maxParticleSpawnSize)
-        // ), 2);
-        // 
-        return randomInRange(minParticleSpawnSize, maxParticleSpawnSize);
+        // this biases the size towards the middle of the range
+        return randomInRange(minParticleSpawnSize, maxParticleSpawnSize) / 2 + 
+        randomInRange(minParticleSpawnSize, maxParticleSpawnSize) / 2;
     }
 
     /**

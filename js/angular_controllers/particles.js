@@ -46,16 +46,7 @@ angular.module("App")
     /* refers to radius */
     var collapseSize = 100;
 
-    /* this maximum is per direction */
-    var maxMoveSpeed = 2;
-
-    var maxSpeed = maxMoveSpeed;
-
-    /* used to calculate minMoveSpeed */
-    var baseMinMoveSpeed = maxMoveSpeed; // the speed at which the first particle will move
-
-    /* this minimum is absolute magnitude */
-    var minMoveSpeed = 1;
+    var maxSpeed = 3;
 
     /* frame rate for movement. This is = 1000/moveRate fps */
     var moveRate = 1000 / 24;
@@ -325,30 +316,12 @@ angular.module("App")
         window.setTimeout(moveAllTheThings, moveRate);
     }
 
-    /**
-     * Return the minimum speed for a particle, as a function of the # of particles
-     * The idea is to make the first few particles fast, and go slower as move particles are needed
-     */
-    function particleMinMoveSpeed() {
-        if (particles.length === 0) {
-            return baseMinMoveSpeed;
-        } else {
-            var frac = (maxParticles - particles.length) / maxParticles;
-            var y = (Math.exp(baseMinMoveSpeed) - 1) * frac + 1;
-            return baseMinMoveSpeed - Math.log(y);
-        }
-    }
-
     /*
      * Create a new particle.
      * A particle is generated from within the center of the $scope.canvas, then moves outward
      */
     function genParticle (spawnPos) {
-        // update min-move speed
-        minMoveSpeed = particleMinMoveSpeed();
-
         var energy = randomEnergy();
-
         particles.push(new Particle(spawnPos, energy));
     }
 

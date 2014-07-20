@@ -22,6 +22,38 @@
 	<script src="bower_components/jquery/jquery.js"></script>
 
 	<script>
+    var maxSize = 100;
+
+    function getRandomSize() {
+        //return randomInRange(0, maxSize);
+        return randomInRange(0, maxSize) / 2 +
+        randomInRange(0, maxSize) / 2;
+    }
+
+    function iterate(n) {
+        var arr = [];
+        for(var i = 0; i < n; i++) {
+            arr.push(1);
+        }
+        return arr.map(function () { return getRandomSize(); });
+    }
+
+    function showDistribution() {
+        var sizes = iterate(1000);
+        // 0 - 25
+        // 25 - 50
+        var small = sizes.filter(function(s) { return s < 25; });
+        var smallMed = sizes.filter(function(s) { return s >= 25 && s < 50; });
+        var largeMed = sizes.filter(function(s) { return s >= 50 && s < 75; });
+        var large = sizes.filter(function(s) { return s >= 75; });
+
+        console.log("small " + small.length);
+        console.log("smallMed " + smallMed.length);
+        console.log("largeMed " + largeMed.length);
+        console.log("large " + large.length);
+        console.log("total " + sizes.length);
+    }
+
 	$(function() {
 		var maxEnergy = 100;
 
@@ -34,6 +66,7 @@
 		});
 
 		$("#energy").change();
+        showDistribution();
 	});
 	</script>
 </body>

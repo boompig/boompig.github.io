@@ -9,18 +9,17 @@
  * Translate the energy of a particle into the speed at which it travels
  * Speed should be positively correlated with energy
  */
-function energyToSpeed(energy) {
-    // I think a linear correlation is best
-    return energy / 20;
+function energyToSpeed(energy, maxEnergy, maxSpeed) {
+    return linearScale(0, maxEnergy, 0, maxSpeed)(energy);
 }
 
-function energyToRandomVelocity(energy) {
+function energyToRandomVelocity(energy, maxEnergy, maxSpeed) {
     // go in some random direction
     var angle = Math.random() * Math.PI * 2;
 
     var x = Math.cos(angle);
     var y = Math.sin(angle);
-    var speed = energyToSpeed(energy);
+    var speed = energyToSpeed(energy, maxEnergy, maxSpeed);
 
     // convert energy to speed
     return new Vector(x * speed, y * speed);

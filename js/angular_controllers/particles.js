@@ -49,6 +49,8 @@ angular.module("App")
     /* this maximum is per direction */
     var maxMoveSpeed = 2;
 
+    var maxSpeed = maxMoveSpeed;
+
     /* used to calculate minMoveSpeed */
     var baseMinMoveSpeed = maxMoveSpeed; // the speed at which the first particle will move
 
@@ -202,7 +204,7 @@ angular.module("App")
         this.r = randomSize();
 
         // velocity is positively related to energy
-        this.velocity = energyToRandomVelocity(energy);
+        this.velocity = energyToRandomVelocity(energy, maxEnergy, maxSpeed);
 
         this.ticksAlive = 0;
 
@@ -302,26 +304,6 @@ angular.module("App")
         particles.map(function (p) { p.draw() });
         nebulae.map(function (n) { n.draw() });
         blackholes.map(function (b) { b.draw() });
-    }
-
-
-    /**
-     * Return a random velocity, constrained by maxMoveSpeed
-     */
-    function randomVector() {
-        var x = 0, y = 0;
-        var vec = new Vector(x, y);
-
-        // make sure that each particle is moving non-trivially
-        while (vec.sizeSq() < Math.pow(minMoveSpeed, 2)) {
-            x = Math.random() * (maxMoveSpeed * 2) - maxMoveSpeed;
-            y = Math.random() * (maxMoveSpeed * 2) - maxMoveSpeed;
-            vec = new Vector(x, y);
-        }
-
-        //console.log("min move speed = " + Math.abs(x) + Math.abs(y));
-
-        return new Vector(x, y);
     }
 
     function moveAllTheThings() {

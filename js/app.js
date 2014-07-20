@@ -2,7 +2,8 @@ var app = angular.module("App", ['ngRoute', 'ngAnimate'])
 .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
     "use strict";
 
-    $routeProvider.when("/~dbkats/Particles", {
+    $routeProvider
+    .when("/~dbkats/Particles", {
         templateUrl: "views/particles.html",
         controller: "ParticleCtrl",
         controllerAs: "p"

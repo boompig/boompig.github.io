@@ -12,6 +12,7 @@ export default [
     {
         files: ['**/*.{js,ts}'],
         languageOptions: {
+            parser: tsparser,
             globals: {
                 document: 'readonly',
                 window: 'readonly',
@@ -20,6 +21,10 @@ export default [
                 crypto: 'readonly',
                 atob: 'readonly',
                 btoa: 'readonly',
+                CryptoKey: 'readonly',
+                TextEncoder: 'readonly',
+                TextDecoder: 'readonly',
+                BufferSource: 'readonly',
             },
         },
         rules: {

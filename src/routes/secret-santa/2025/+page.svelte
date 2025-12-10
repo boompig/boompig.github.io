@@ -2,6 +2,7 @@
     import Button from '$lib/Button.svelte';
     import Input from '$lib/Input.svelte';
     import EncryptionResult from '$lib/EncryptionResult.svelte';
+    import { encryptString, decryptString, type EncryptionData } from '$lib/crypto-utils';
 
     // Encryption state
     let nameValue: string = $state('');
@@ -18,80 +19,20 @@
     let decryptionError: string = $state('');
 
     // URL state
-    let encryptionData: { ct: string; key: string; iv: string } | null =
-        $state(null);
+    let encryptionData: EncryptionData | null = $state(null);
     let isCopying: boolean = $state(false);
     let isDecryptMode: boolean = $state(false);
 
-    // Generate a random key for demonstration (in real app, you'd manage keys securely)
-    async function generateKey(): Promise<CryptoKey> {
-        return await crypto.subtle.generateKey(
-            {
-                name: 'AES-GCM',
-                length: 128,
-            },
-            true,
-            ['encrypt', 'decrypt'],
-        );
-    }
-
-    // Convert string to ArrayBuffer
-    function stringToArrayBuffer(str: string): Uint8Array {
-        return new TextEncoder().encode(str);
-    }
-
-    // Convert ArrayBuffer to base64 string
-    function arrayBufferToBase64(buffer: ArrayBuffer): string {
-        const bytes = new Uint8Array(buffer);
-        let binary = '';
-        for (let i = 0; i < bytes.byteLength; i++) {
-            binary += String.fromCharCode(bytes[i]);
-        }
-        return btoa(binary);
-    }
-
     // Encrypt the name
     async function encryptName(): Promise<void> {
-        if (!nameValue.trim()) {
-            error = 'Please enter a name to encrypt';
-            return;
-        }
-
         try {
             isEncrypting = true;
             error = '';
 
-            // Generate a new key for this encryption
-            const key: CryptoKey = await generateKey();
+            const result = await encryptString(nameValue);
 
-            // Generate random IV
-            const iv: Uint8Array = crypto.getRandomValues(new Uint8Array(12));
-
-            // Encrypt the name
-            const encrypted: ArrayBuffer = await crypto.subtle.encrypt(
-                {
-                    name: 'AES-GCM',
-                    iv: iv as BufferSource,
-                },
-                key,
-                stringToArrayBuffer(nameValue) as BufferSource,
-            );
-
-            // Export the key for display
-            const exportedKey: ArrayBuffer = await crypto.subtle.exportKey(
-                'raw',
-                key,
-            );
-
-            // Store encryption data
-            encryptionData = {
-                ct: arrayBufferToBase64(encrypted),
-                key: arrayBufferToBase64(exportedKey),
-                iv: arrayBufferToBase64(iv.buffer as ArrayBuffer),
-            };
-
-            // Format result for display
-            encryptedResult = JSON.stringify(encryptionData, null, 2);
+            encryptionData = result.encryptionData;
+            encryptedResult = result.formattedResult;
         } catch (err: unknown) {
             error = `Encryption failed: ${err instanceof Error ? err.message : String(err)}`;
             encryptedResult = '';
@@ -100,58 +41,17 @@
         }
     }
 
-    // Convert base64 string to ArrayBuffer
-    function base64ToArrayBuffer(base64: string): ArrayBuffer {
-        const binary = atob(base64);
-        const bytes = new Uint8Array(binary.length);
-        for (let i = 0; i < binary.length; i++) {
-            bytes[i] = binary.charCodeAt(i);
-        }
-        return bytes.buffer as ArrayBuffer;
-    }
-
-    // Convert ArrayBuffer to string
-    function arrayBufferToString(buffer: ArrayBuffer): string {
-        return new TextDecoder().decode(buffer);
-    }
-
     // Decrypt the data
     async function decryptData(): Promise<void> {
-        if (!encryptedText.trim() || !decryptionKey.trim() || !ivValue.trim()) {
-            decryptionError = 'Please fill in all decryption fields';
-            return;
-        }
-
         try {
             isDecrypting = true;
             decryptionError = '';
 
-            // Convert base64 strings back to ArrayBuffers
-            const keyBuffer: ArrayBuffer = base64ToArrayBuffer(decryptionKey);
-            const encryptedBuffer: ArrayBuffer = base64ToArrayBuffer(encryptedText);
-            const ivBuffer: ArrayBuffer = base64ToArrayBuffer(ivValue);
-
-            // Import the key
-            const key: CryptoKey = await crypto.subtle.importKey(
-                'raw',
-                keyBuffer,
-                { name: 'AES-GCM' },
-                false,
-                ['decrypt'],
+            decryptedResult = await decryptString(
+                encryptedText,
+                decryptionKey,
+                ivValue,
             );
-
-            // Decrypt the data
-            const decrypted: ArrayBuffer = await crypto.subtle.decrypt(
-                {
-                    name: 'AES-GCM',
-                    iv: ivBuffer,
-                },
-                key,
-                encryptedBuffer,
-            );
-
-            // Convert back to string
-            decryptedResult = arrayBufferToString(decrypted);
         } catch (err: unknown) {
             decryptionError = `Decryption failed: ${err instanceof Error ? err.message : String(err)}`;
             decryptedResult = '';

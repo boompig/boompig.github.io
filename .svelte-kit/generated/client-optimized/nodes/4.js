@@ -1,0 +1,1 @@
+export { default as component } from "../../../../src/routes/secret-santa/2025/+page.svelte";

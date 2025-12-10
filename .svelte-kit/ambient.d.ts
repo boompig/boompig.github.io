@@ -26,18 +26,22 @@
  * ```
  */
 declare module '$env/static/private' {
-	export const TERM_PROGRAM: string;
+	export const NoDefaultCurrentDirectoryInExePath: string;
+	export const CLAUDE_CODE_ENTRYPOINT: string;
+	export const VSCODE_CRASH_REPORTER_PROCESS_TYPE: string;
 	export const NODE: string;
 	export const INIT_CWD: string;
 	export const TERM: string;
 	export const SHELL: string;
 	export const TMPDIR: string;
 	export const npm_config_global_prefix: string;
-	export const TERM_PROGRAM_VERSION: string;
+	export const APPLICATIONINSIGHTS_CONFIGURATION_CONTENT: string;
+	export const ORIGINAL_XDG_CURRENT_DESKTOP: string;
+	export const MallocNanoZone: string;
 	export const COLOR: string;
-	export const TERM_SESSION_ID: string;
 	export const npm_config_noproxy: string;
 	export const npm_config_local_prefix: string;
+	export const GIT_EDITOR: string;
 	export const USER: string;
 	export const LS_COLORS: string;
 	export const COMMAND_MODE: string;
@@ -46,9 +50,8 @@ declare module '$env/static/private' {
 	export const SSH_AUTH_SOCK: string;
 	export const __CF_USER_TEXT_ENCODING: string;
 	export const npm_execpath: string;
-	export const TERM_FEATURES: string;
+	export const ELECTRON_RUN_AS_NODE: string;
 	export const LSCOLORS: string;
-	export const TERMINFO_DIRS: string;
 	export const PATH: string;
 	export const SAM_CLI_TELEMETRY: string;
 	export const npm_package_json: string;
@@ -58,12 +61,12 @@ declare module '$env/static/private' {
 	export const __CFBundleIdentifier: string;
 	export const npm_command: string;
 	export const PWD: string;
-	export const JAVA_HOME: string;
+	export const VSCODE_HANDLES_UNCAUGHT_ERRORS: string;
 	export const npm_lifecycle_event: string;
+	export const OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE: string;
+	export const VSCODE_ESM_ENTRYPOINT: string;
 	export const EDITOR: string;
 	export const npm_package_name: string;
-	export const LANG: string;
-	export const ITERM_PROFILE: string;
 	export const npm_config_npm_version: string;
 	export const XPC_FLAGS: string;
 	export const npm_config_node_gyp: string;
@@ -71,19 +74,24 @@ declare module '$env/static/private' {
 	export const XPC_SERVICE_NAME: string;
 	export const SHLVL: string;
 	export const HOME: string;
-	export const COLORFGBG: string;
-	export const LC_TERMINAL_VERSION: string;
-	export const ITERM_SESSION_ID: string;
+	export const APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL: string;
+	export const VSCODE_NLS_CONFIG: string;
+	export const APPLICATION_INSIGHTS_NO_STATSBEAT: string;
 	export const npm_config_cache: string;
 	export const LOGNAME: string;
 	export const npm_lifecycle_script: string;
 	export const VISUAL: string;
+	export const VSCODE_IPC_HOOK: string;
+	export const VSCODE_CODE_CACHE_PATH: string;
+	export const COREPACK_ENABLE_AUTO_PIN: string;
 	export const npm_config_user_agent: string;
-	export const LC_TERMINAL: string;
-	export const SQLITE_EXEMPT_PATH_FROM_VNODE_GUARDS: string;
+	export const VSCODE_PID: string;
+	export const CLAUDECODE: string;
+	export const DEBUG: string;
+	export const VSCODE_L10N_BUNDLE_LOCATION: string;
+	export const VSCODE_CWD: string;
 	export const npm_node_execpath: string;
 	export const npm_config_prefix: string;
-	export const COLORTERM: string;
 	export const NODE_ENV: string;
 }
 
@@ -114,18 +122,22 @@ declare module '$env/static/public' {
  */
 declare module '$env/dynamic/private' {
 	export const env: {
-		TERM_PROGRAM: string;
+		NoDefaultCurrentDirectoryInExePath: string;
+		CLAUDE_CODE_ENTRYPOINT: string;
+		VSCODE_CRASH_REPORTER_PROCESS_TYPE: string;
 		NODE: string;
 		INIT_CWD: string;
 		TERM: string;
 		SHELL: string;
 		TMPDIR: string;
 		npm_config_global_prefix: string;
-		TERM_PROGRAM_VERSION: string;
+		APPLICATIONINSIGHTS_CONFIGURATION_CONTENT: string;
+		ORIGINAL_XDG_CURRENT_DESKTOP: string;
+		MallocNanoZone: string;
 		COLOR: string;
-		TERM_SESSION_ID: string;
 		npm_config_noproxy: string;
 		npm_config_local_prefix: string;
+		GIT_EDITOR: string;
 		USER: string;
 		LS_COLORS: string;
 		COMMAND_MODE: string;
@@ -134,9 +146,8 @@ declare module '$env/dynamic/private' {
 		SSH_AUTH_SOCK: string;
 		__CF_USER_TEXT_ENCODING: string;
 		npm_execpath: string;
-		TERM_FEATURES: string;
+		ELECTRON_RUN_AS_NODE: string;
 		LSCOLORS: string;
-		TERMINFO_DIRS: string;
 		PATH: string;
 		SAM_CLI_TELEMETRY: string;
 		npm_package_json: string;
@@ -146,12 +157,12 @@ declare module '$env/dynamic/private' {
 		__CFBundleIdentifier: string;
 		npm_command: string;
 		PWD: string;
-		JAVA_HOME: string;
+		VSCODE_HANDLES_UNCAUGHT_ERRORS: string;
 		npm_lifecycle_event: string;
+		OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE: string;
+		VSCODE_ESM_ENTRYPOINT: string;
 		EDITOR: string;
 		npm_package_name: string;
-		LANG: string;
-		ITERM_PROFILE: string;
 		npm_config_npm_version: string;
 		XPC_FLAGS: string;
 		npm_config_node_gyp: string;
@@ -159,19 +170,24 @@ declare module '$env/dynamic/private' {
 		XPC_SERVICE_NAME: string;
 		SHLVL: string;
 		HOME: string;
-		COLORFGBG: string;
-		LC_TERMINAL_VERSION: string;
-		ITERM_SESSION_ID: string;
+		APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL: string;
+		VSCODE_NLS_CONFIG: string;
+		APPLICATION_INSIGHTS_NO_STATSBEAT: string;
 		npm_config_cache: string;
 		LOGNAME: string;
 		npm_lifecycle_script: string;
 		VISUAL: string;
+		VSCODE_IPC_HOOK: string;
+		VSCODE_CODE_CACHE_PATH: string;
+		COREPACK_ENABLE_AUTO_PIN: string;
 		npm_config_user_agent: string;
-		LC_TERMINAL: string;
-		SQLITE_EXEMPT_PATH_FROM_VNODE_GUARDS: string;
+		VSCODE_PID: string;
+		CLAUDECODE: string;
+		DEBUG: string;
+		VSCODE_L10N_BUNDLE_LOCATION: string;
+		VSCODE_CWD: string;
 		npm_node_execpath: string;
 		npm_config_prefix: string;
-		COLORTERM: string;
 		NODE_ENV: string;
 		[key: `PUBLIC_${string}`]: undefined;
 		[key: `${string}`]: string | undefined;

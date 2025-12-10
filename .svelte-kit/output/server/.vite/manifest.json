@@ -91,6 +91,16 @@
       "_index-server.js"
     ]
   },
+  "node_modules/@sveltejs/kit/src/runtime/components/svelte-5/layout.svelte": {
+    "file": "entries/fallbacks/layout.svelte.js",
+    "name": "entries/fallbacks/layout.svelte",
+    "src": "node_modules/@sveltejs/kit/src/runtime/components/svelte-5/layout.svelte",
+    "isEntry": true,
+    "imports": [
+      "_false.js",
+      "_server.js"
+    ]
+  },
   "node_modules/@sveltejs/kit/src/runtime/server/index.js": {
     "file": "index.js",
     "name": "index",
@@ -138,6 +148,12 @@
     "css": [
       "_app/immutable/assets/_page.oTZJi6Zh.css"
     ]
+  },
+  "src/routes/secret-santa/2025/+layout.js": {
+    "file": "entries/pages/secret-santa/2025/_layout.js",
+    "name": "entries/pages/secret-santa/2025/_layout",
+    "src": "src/routes/secret-santa/2025/+layout.js",
+    "isEntry": true
   },
   "src/routes/secret-santa/2025/+page.svelte": {
     "file": "entries/pages/secret-santa/2025/_page.svelte.js",

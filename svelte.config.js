@@ -5,11 +5,12 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte'
 const config = {
 	kit: {
 		adapter: adapter({
-			fallback: '404.html',
+			fallback: undefined,
 			precompress: false,
 			strict: true
 		}),
 		prerender: {
+			entries: ['*'],
 			handleMissingId: 'ignore'
 		}
 	},

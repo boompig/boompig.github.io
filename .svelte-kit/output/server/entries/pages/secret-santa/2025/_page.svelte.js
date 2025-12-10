@@ -11,7 +11,7 @@ function Button($$renderer, $$props) {
 }
 function Input($$renderer, $$props) {
 	$$renderer.component(($$renderer$1) => {
-		let { type = "text", placeholder = "", value = "", disabled = false, required = false, id = "", name = "", variant = "default", size = "medium", label = "", error = "", oninput, onchange, onkeydown } = $$props;
+		let { type = "text", placeholder = "", value = "", disabled = false, required = false, id = "", name = "", variant = "default", size = "medium", label = "", error = "", oninput = void 0, onchange = void 0, onkeydown = void 0 } = $$props;
 		let focused = false;
 		if (label) {
 			$$renderer$1.push("<!--[-->");
@@ -46,6 +46,22 @@ function _page($$renderer, $$props) {
 		let decryptionKey = "";
 		let ivValue = "";
 		let decryptionError = "";
+		let isDecryptMode = false;
+		function readFromUrl() {
+			if (typeof window === "undefined") return;
+			const url = new URL(window.location.href);
+			const op = url.searchParams.get("op");
+			const ct = url.searchParams.get("ct");
+			const key = url.searchParams.get("key");
+			const iv = url.searchParams.get("iv");
+			if (op === "d") isDecryptMode = true;
+			if (ct && key && iv) {
+				encryptedText = ct;
+				decryptionKey = key;
+				ivValue = iv;
+			}
+		}
+		if (typeof window !== "undefined") readFromUrl();
 		let $$settled = true;
 		let $$inner_renderer;
 		function $$render_inner($$renderer$2) {
@@ -54,34 +70,41 @@ function _page($$renderer, $$props) {
 					$$renderer$4.push(`<title>Secret Santa 2025 | kats.coffee</title>`);
 				});
 			});
-			$$renderer$2.push(`<h1>Secret Santa 2025</h1> <p>This page decrypts the secret santa pairings.</p> <section class="encrypt-section svelte-1l8ukcd"><h2 class="svelte-1l8ukcd">Encrypt Name</h2> <form class="svelte-1l8ukcd">`);
+			$$renderer$2.push(`<h1>Secret Santa 2025</h1> <p>Santa is a secret agent.</p> `);
+			if (!isDecryptMode) {
+				$$renderer$2.push("<!--[-->");
+				$$renderer$2.push(`<section class="encrypt-section svelte-1l8ukcd"><h2 class="svelte-1l8ukcd">Encrypt Name</h2> <form class="svelte-1l8ukcd">`);
+				Input($$renderer$2, {
+					placeholder: "Enter your name",
+					required: true,
+					error,
+					get value() {
+						return nameValue;
+					},
+					set value($$value) {
+						nameValue = $$value;
+						$$settled = false;
+					}
+				});
+				$$renderer$2.push(`<!----> `);
+				Button($$renderer$2, {
+					type: "submit",
+					variant: "primary",
+					disabled: !nameValue.trim(),
+					children: ($$renderer$3) => {
+						$$renderer$3.push(`<!---->${escape_html("Encrypt")}`);
+					},
+					$$slots: { default: true }
+				});
+				$$renderer$2.push(`<!----></form> `);
+				EncryptionResult($$renderer$2, { result: encryptedResult });
+				$$renderer$2.push(`<!----> `);
+				$$renderer$2.push("<!--[!-->");
+				$$renderer$2.push(`<!--]--></section>`);
+			} else $$renderer$2.push("<!--[!-->");
+			$$renderer$2.push(`<!--]--> <section class="decrypt-section svelte-1l8ukcd"><h2 class="svelte-1l8ukcd">Decrypt Name</h2> <form class="svelte-1l8ukcd">`);
 			Input($$renderer$2, {
-				placeholder: "Enter your name",
-				required: true,
-				error,
-				get value() {
-					return nameValue;
-				},
-				set value($$value) {
-					nameValue = $$value;
-					$$settled = false;
-				}
-			});
-			$$renderer$2.push(`<!----> `);
-			Button($$renderer$2, {
-				type: "submit",
-				variant: "primary",
-				disabled: !nameValue.trim(),
-				children: ($$renderer$3) => {
-					$$renderer$3.push(`<!---->${escape_html("Encrypt")}`);
-				},
-				$$slots: { default: true }
-			});
-			$$renderer$2.push(`<!----></form> `);
-			EncryptionResult($$renderer$2, { result: encryptedResult });
-			$$renderer$2.push(`<!----></section> <section class="decrypt-section svelte-1l8ukcd"><h2 class="svelte-1l8ukcd">Decrypt Name</h2> <form class="svelte-1l8ukcd">`);
-			Input($$renderer$2, {
-				placeholder: "Enter encrypted text (hex)",
+				placeholder: "Enter encrypted text (base64)",
 				required: true,
 				error: decryptionError,
 				get value() {
@@ -94,7 +117,7 @@ function _page($$renderer, $$props) {
 			});
 			$$renderer$2.push(`<!----> `);
 			Input($$renderer$2, {
-				placeholder: "Enter key (hex)",
+				placeholder: "Enter key (base64)",
 				required: true,
 				get value() {
 					return decryptionKey;
@@ -106,7 +129,7 @@ function _page($$renderer, $$props) {
 			});
 			$$renderer$2.push(`<!----> `);
 			Input($$renderer$2, {
-				placeholder: "Enter IV (hex)",
+				placeholder: "Enter IV (base64)",
 				required: true,
 				get value() {
 					return ivValue;

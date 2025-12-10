@@ -107,6 +107,12 @@
       "_index-server.js"
     ]
   },
+  "src/routes/+layout.js": {
+    "file": "entries/pages/_layout.js",
+    "name": "entries/pages/_layout",
+    "src": "src/routes/+layout.js",
+    "isEntry": true
+  },
   "src/routes/+layout.svelte": {
     "file": "entries/pages/_layout.svelte.js",
     "name": "entries/pages/_layout.svelte",
@@ -143,7 +149,7 @@
       "_server.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.C0kYr_2N.css"
+      "_app/immutable/assets/_page.DS03Jnnn.css"
     ]
   }
 }

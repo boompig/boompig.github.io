@@ -1,4 +1,9 @@
 {
-	"/": [],
-	"/secret-santa/2025": []
+	"/": [
+		"src/routes/+layout.js",
+		"src/routes/+layout.js"
+	],
+	"/secret-santa/2025": [
+		"src/routes/+layout.js"
+	]
 }

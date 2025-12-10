@@ -1,11 +1,11 @@
 <footer>
-  <div class="container">
-    <p>&copy; 2024 Daniel Kats. All rights reserved.</p>
-    <p class="links">
-      <a href="https://reffie.com" target="_blank" rel="noopener noreferrer">Reffie</a> | 
-      <a href="mailto:daniel@kats.coffee">Contact</a>
-    </p>
-  </div>
+    <div class="container">
+        <p>&copy; 2024 Daniel Kats. All rights reserved.</p>
+        <p class="links">
+            <a href="https://reffie.com" target="_blank" rel="noopener noreferrer">Reffie</a> |
+            <a href="mailto:daniel@kats.coffee">Contact</a>
+        </p>
+    </div>
 </footer>
 
 <style>

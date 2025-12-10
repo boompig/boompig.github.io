@@ -1,26 +1,26 @@
 <script>
-  let {
-    variant = 'primary',
-    size = 'medium',
-    disabled = false,
-    href = undefined,
-    type = 'button',
-    onclick = undefined,
-    children
-  } = $props();
+    const {
+        variant = 'primary',
+        size = 'medium',
+        disabled = false,
+        href = undefined,
+        type = 'button',
+        onclick = undefined,
+        children,
+    } = $props();
 
-  const Tag = href ? 'a' : 'button';
+    const Tag = href ? 'a' : 'button';
 </script>
 
 <svelte:element
-  this={Tag}
-  {href}
-  {disabled}
-  {type}
-  class="btn btn-{variant} btn-{size}"
-  {onclick}
+    this={Tag}
+    {href}
+    {disabled}
+    {type}
+    class="btn btn-{variant} btn-{size}"
+    {onclick}
 >
-  {@render children?.()}
+    {@render children?.()}
 </svelte:element>
 
 <style>

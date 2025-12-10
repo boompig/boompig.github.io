@@ -1,16 +1,16 @@
 <header>
-  <div class="container">
-    <div class="header-content">
-      <div class="logo-title">
-        <img src="/logo.svg" alt="kats.coffee logo" class="logo" />
-        <h1><span class="site-title">kats.coffee</span></h1>
-      </div>
-      <nav>
-        <a href="/">Home</a>
-        <a href="#about">About</a>
-      </nav>
+    <div class="container">
+        <div class="header-content">
+            <div class="logo-title">
+                <img src="/logo.svg" alt="kats.coffee logo" class="logo" />
+                <h1><span class="site-title">kats.coffee</span></h1>
+            </div>
+            <nav>
+                <a href="/">Home</a>
+                <a href="#about">About</a>
+            </nav>
+        </div>
     </div>
-  </div>
 </header>
 
 <style>

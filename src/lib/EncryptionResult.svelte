@@ -1,12 +1,12 @@
 <script>
-  let { result = "" } = $props();
+    const { result = '' } = $props();
 </script>
 
 {#if result}
-  <div class="result-section">
-    <h3>Encryption Result</h3>
-    <pre class="encrypted-output">{result}</pre>
-  </div>
+    <div class="result-section">
+        <h3>Encryption Result</h3>
+        <pre class="encrypted-output">{result}</pre>
+    </div>
 {/if}
 
 <style>

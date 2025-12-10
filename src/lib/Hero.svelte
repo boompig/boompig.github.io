@@ -1,8 +1,8 @@
 <section class="hero">
-  <div class="container">
-    <h2>Daniel Kats</h2>
-    <p>Founder of Reffie | Thoughts on startups, tech, and coffee</p>
-  </div>
+    <div class="container">
+        <h2>Daniel Kats</h2>
+        <p>Founder of Reffie | Thoughts on startups, tech, and coffee</p>
+    </div>
 </section>
 
 <style>

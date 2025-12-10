@@ -1,22 +1,22 @@
 <script>
-  let {
-    date,
-    title,
-    excerpt,
-    tags
-  } = $props();
+    const {
+        date,
+        title,
+        excerpt,
+        tags,
+    } = $props();
 </script>
 
 <article class="blog-post">
-  <div class="post-meta">{date}</div>
-  <h3 class="post-title">{title}</h3>
-  <p class="post-excerpt">{excerpt}</p>
-  <div class="tags">
-    {#each tags as tag}
-      <span class="tag">{tag}</span>
-    {/each}
-  </div>
-  <a href="#" class="read-more">Read more →</a>
+    <div class="post-meta">{date}</div>
+    <h3 class="post-title">{title}</h3>
+    <p class="post-excerpt">{excerpt}</p>
+    <div class="tags">
+        {#each tags as tag}
+            <span class="tag">{tag}</span>
+        {/each}
+    </div>
+    <a href="#" class="read-more">Read more →</a>
 </article>
 
 <style>

@@ -1,13 +1,13 @@
 <script>
-  import Header from './lib/Header.svelte'
-  import BlogGrid from './lib/BlogGrid.svelte'
+    import Header from './lib/Header.svelte';
+    import BlogGrid from './lib/BlogGrid.svelte';
 </script>
 
 <Header />
 <main>
-  <div class="container">
-    <BlogGrid />
-  </div>
+    <div class="container">
+        <BlogGrid />
+    </div>
 </main>
 
 <style>

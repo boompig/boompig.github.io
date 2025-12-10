@@ -1,47 +1,47 @@
 <script>
-  let {
-    type = 'text',
-    placeholder = '',
-    value = $bindable(''),
-    disabled = false,
-    required = false,
-    id = '',
-    name = '',
-    variant = 'default',
-    size = 'medium',
-    label = '',
-    error = '',
-    oninput = undefined,
-    onchange = undefined,
-    onkeydown = undefined
-  } = $props();
+    let {
+        type = 'text',
+        placeholder = '',
+        value = $bindable(''),
+        disabled = false,
+        required = false,
+        id = '',
+        name = '',
+        variant = 'default',
+        size = 'medium',
+        label = '',
+        error = '',
+        oninput = undefined,
+        onchange = undefined,
+        onkeydown = undefined,
+    } = $props();
 
-  let focused = $state(false);
+    let focused = $state(false);
 </script>
 
 {#if label}
-  <label for={id} class="input-label">{label}</label>
+    <label for={id} class="input-label">{label}</label>
 {/if}
 
 <div class="input-wrapper input-{variant} input-{size}" class:focused class:error>
-  <input
-    {type}
-    {placeholder}
-    {disabled}
-    {required}
-    {id}
-    {name}
-    bind:value
-    onfocus={() => focused = true}
-    onblur={() => focused = false}
-    {oninput}
-    {onchange}
-    {onkeydown}
-  />
+    <input
+        {type}
+        {placeholder}
+        {disabled}
+        {required}
+        {id}
+        {name}
+        bind:value
+        onfocus={() => focused = true}
+        onblur={() => focused = false}
+        {oninput}
+        {onchange}
+        {onkeydown}
+    />
 </div>
 
 {#if error}
-  <span class="error-message">{error}</span>
+    <span class="error-message">{error}</span>
 {/if}
 
 <style>

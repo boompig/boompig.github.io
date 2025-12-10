@@ -1,10 +1,12 @@
 <script>
-  export let title
-  export let description
-  export let tags
-  export let website = null
-  export let github = null
-  export let date = null
+  let {
+    title,
+    description,
+    tags,
+    website = null,
+    github = null,
+    date = null
+  } = $props();
 </script>
 
 <article class="project-card">

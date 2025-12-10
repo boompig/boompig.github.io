@@ -1,8 +1,10 @@
 <script>
-  export let date
-  export let title
-  export let excerpt
-  export let tags
+  let {
+    date,
+    title,
+    excerpt,
+    tags
+  } = $props();
 </script>
 
 <article class="blog-post">
